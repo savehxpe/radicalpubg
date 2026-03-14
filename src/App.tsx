@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
 import Navbar from './components/Navbar';
 import HeroSection from './components/HeroSection';
-import LogoCarousel from './components/LogoCarousel';
+import PartnerMarquee from './components/PartnerMarquee';
 import InteractiveCatalog from './components/InteractiveCatalog';
 import ServicesSection from './components/ServicesSection';
 import DreMoonSection from './components/DreMoonSection';
@@ -21,7 +21,7 @@ function App() {
       <Navbar />
       <main>
         <HeroSection />
-        <LogoCarousel />
+        <PartnerMarquee />
         <ServicesSection />
         <DreMoonSection />
         <InteractiveCatalog />

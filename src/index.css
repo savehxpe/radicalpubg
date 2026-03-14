@@ -54,4 +54,28 @@
   .perspective-grid {
     perspective: 1000px;
   }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+}
+
+/* MASTER_03 Rule 28: Restrict entire DOM to #000000 and #FFFFFF */
+* {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+::selection {
+  background: white;
+  color: black;
 }

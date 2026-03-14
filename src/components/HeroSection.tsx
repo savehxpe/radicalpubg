@@ -56,8 +56,6 @@ export default function HeroSection() {
 
             {/* Content */}
             <div className="relative z-20 container mx-auto px-6 text-center pt-32 pb-12 flex flex-col items-center justify-center min-h-screen">
-
-
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -89,9 +87,9 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.2 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full mt-24"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full mt-[6rem]"
                 >
-                    <a href="#catalog" className="w-full sm:w-auto px-10 py-4 bg-white text-black font-black text-lg rounded-xl uppercase tracking-widest hover:bg-slate-200 hover:scale-105 transition-all outline-none">
+                    <a href="#catalog" className="w-full sm:w-auto px-10 py-4 bg-white text-black font-black text-lg rounded-none uppercase tracking-widest hover:bg-white hover:scale-105 transition-all outline-none">
                         Explore Catalog
                     </a>
                 </motion.div>

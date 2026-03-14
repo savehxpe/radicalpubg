@@ -9,7 +9,7 @@ export default function Navbar() {
                 {['Catalog', 'Artists', 'Contact'].map((item) => {
                     const href = `#${item.toLowerCase()}`;
                     return (
-                        <a key={item} className="text-slate-400 hover:text-white transition-colors text-sm font-medium uppercase tracking-widest" href={href}>
+                        <a key={item} className="text-white hover:opacity-70 transition-colors text-sm font-medium uppercase tracking-widest" href={href}>
                             {item}
                         </a>
                     )
