@@ -11,7 +11,7 @@ const logos = [
 
 export default function LogoCarousel() {
     return (
-        <section className="py-12 border-y border-white/10 overflow-hidden bg-black flex justify-center relative z-50">
+        <section className="py-16 border-y border-white/10 overflow-hidden bg-black flex justify-center relative z-[99]">
             <div className="flex whitespace-nowrap group w-full max-w-7xl relative">
                 {/* Fade edges */}
                 <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
@@ -19,11 +19,11 @@ export default function LogoCarousel() {
 
                 <motion.div
                     animate={{ x: [0, -2000] }}
-                    transition={{ repeat: Infinity, ease: "linear", duration: 30 }}
-                    className="flex gap-12 items-center"
+                    transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
+                    className="flex gap-20 items-center"
                 >
-                    {[...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
-                        <div key={index} className="flex items-center justify-center p-4">
+                    {[...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
+                        <div key={index} className="flex items-center justify-center px-4">
                             <img
                                 src={logo.src}
                                 alt={logo.alt}
@@ -32,7 +32,11 @@ export default function LogoCarousel() {
                                     filter: 'brightness(2) contrast(2)',
                                     opacity: 1
                                 }}
-                                className="w-auto object-contain transition-opacity hover:opacity-80 appearance-none"
+                                className="w-auto object-contain transition-opacity hover:opacity-80 appearance-none pointer-events-none"
+                                onError={(e) => {
+                                    // Fallback for debugging if assets fail
+                                    e.currentTarget.style.display = 'none';
+                                }}
                             />
                         </div>
                     ))}
