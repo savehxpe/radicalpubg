@@ -1,14 +1,44 @@
 
 import { UploadCloud, Music, ArrowRight, Wallet, Headphones, Library, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import type { Royalty, ArtistSubmission } from '../lib/firebase';
+import { rtdb } from '../lib/firebase';
+import { ref, push, set } from 'firebase/database';
+import { useState } from 'react';
 
 export default function ArtistPortal() {
-    const royalties = [
-        { track: "NEON HORIZON", type: "Master Royalty", period: "Q3 2026", amount: "$482.10" },
-        { track: "CYBERPUNK BLUES", type: "Mechanical", period: "Q3 2026", amount: "$215.45" },
-        { track: "VOID DANCER", type: "Sync License", period: "Q3 2026", amount: "$1,500.00" },
-        { track: "DATA RAIN", type: "Performance", period: "Q2 2026", amount: "$89.12" }
+    const [submission, setSubmission] = useState<Partial<ArtistSubmission>>({
+        artistName: '',
+        email: '',
+        submissionLink: '',
+        aestheticNotes: ''
+    });
+
+    // Derived mock data representing the `Royalty` table related to Jet Admin
+    const royalties: Royalty[] = [
+        { id: '1', song: "NEON HORIZON", type: "Master Royalty", paymentDate: new Date("2026-09-01"), amount: 482.10, createdAt: new Date() },
+        { id: '2', song: "CYBERPUNK BLUES", type: "Mechanical", paymentDate: new Date("2026-08-15"), amount: 215.45, createdAt: new Date() },
+        { id: '3', song: "VOID DANCER", type: "Sync License", paymentDate: new Date("2026-07-12"), amount: 1500.00, createdAt: new Date() },
+        { id: '4', song: "DATA RAIN", type: "Performance", paymentDate: new Date("2026-06-05"), amount: 89.12, createdAt: new Date() }
     ];
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            const submissionsRef = ref(rtdb, 'submissions');
+            const newSubmissionRef = push(submissionsRef);
+            await set(newSubmissionRef, {
+                ...submission,
+                createdAt: new Date().toISOString(),
+                status: 'pending'
+            });
+            alert(`Demo from ${submission.artistName} mapped for ingestion.`);
+            setSubmission({ artistName: '', email: '', submissionLink: '', aestheticNotes: '' });
+        } catch (error) {
+            console.error("Submission failed:", error);
+            alert("Error submitting demo to the database. Please try again.");
+        }
+    };
 
     return (
         <section id="portal" className="py-24 bg-background-dark px-6 border-t border-white/10 relative overflow-hidden">
@@ -60,32 +90,61 @@ export default function ArtistPortal() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* Submission Form Section */}
+                    {/* Submission Form Section mapping to ArtistSubmission @table */}
                     <section className="space-y-6">
                         <div className="flex items-center gap-2 mb-2">
                             <Music className="text-primary w-6 h-6" />
                             <h4 className="text-2xl font-black tracking-tight uppercase">Submit Your Record</h4>
                         </div>
                         <div className="p-8 rounded-xl border border-primary/20 bg-background-dark/80 glass-panel relative overflow-hidden shadow-[0_0_30px_rgba(0,255,255,0.05)]">
-                            <form className="space-y-5 relative z-10" onSubmit={(e) => e.preventDefault()}>
+                            <form className="space-y-5 relative z-10" onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <div className="space-y-2">
-                                        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Full Name</label>
-                                        <input type="text" placeholder="Dre Moon" className="w-full bg-black/50 border border-primary/30 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600 text-white" />
+                                        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Artist / Project Name</label>
+                                        <input
+                                            type="text"
+                                            placeholder="DRE MOON ARCHIVES"
+                                            value={submission.artistName}
+                                            onChange={e => setSubmission({ ...submission, artistName: e.target.value })}
+                                            className="w-full bg-black/50 border border-primary/30 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600 text-white"
+                                            required
+                                        />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Artist / Project Name</label>
-                                        <input type="text" placeholder="DRE MOON ARCHIVES" className="w-full bg-black/50 border border-primary/30 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600 text-white" />
+                                        <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Email Address</label>
+                                        <input
+                                            type="email"
+                                            placeholder="dre@radicalpublishing.com"
+                                            value={submission.email}
+                                            onChange={e => setSubmission({ ...submission, email: e.target.value })}
+                                            className="w-full bg-black/50 border border-primary/30 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600 text-white"
+                                            required
+                                        />
                                     </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Email Address</label>
-                                    <input type="email" placeholder="dre@radicalpublishing.com" className="w-full bg-black/50 border border-primary/30 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600 text-white" />
-                                </div>
+
                                 <div className="space-y-2">
                                     <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Private Stream Link</label>
-                                    <input type="url" placeholder="https://soundcloud.com/private..." className="w-full bg-black/50 border border-primary/30 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600 text-white" />
+                                    <input
+                                        type="url"
+                                        placeholder="https://soundcloud.com/private..."
+                                        value={submission.submissionLink}
+                                        onChange={e => setSubmission({ ...submission, submissionLink: e.target.value })}
+                                        className="w-full bg-black/50 border border-primary/30 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600 text-white"
+                                        required
+                                    />
                                 </div>
+
+                                <div className="space-y-2">
+                                    <label className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Aesthetic Notes</label>
+                                    <textarea
+                                        placeholder="Describe the sonic architecture..."
+                                        value={submission.aestheticNotes}
+                                        onChange={e => setSubmission({ ...submission, aestheticNotes: e.target.value })}
+                                        className="w-full bg-black/50 border border-primary/30 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-slate-600 text-white min-h-[80px]"
+                                    />
+                                </div>
+
                                 <div className="pt-4">
                                     <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="w-full bg-primary text-background-dark font-black py-4 rounded-lg hover:shadow-[0_0_20px_rgba(0,255,255,0.4)] transition-all flex items-center justify-center gap-2 uppercase tracking-widest" type="submit">
                                         Transmit Demo <ArrowRight className="w-4 h-4 text-background-dark" />
@@ -96,7 +155,7 @@ export default function ArtistPortal() {
                         </div>
                     </section>
 
-                    {/* Royalties & Performance Section */}
+                    {/* Royalties & Performance Section mapping to Royalty @table */}
                     <section className="space-y-6">
                         <div className="flex items-center justify-between mb-2">
                             <div className="flex items-center gap-2">
@@ -110,24 +169,28 @@ export default function ArtistPortal() {
                                 <thead className="bg-primary/10 border-b border-primary/20">
                                     <tr>
                                         <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400">Track Name</th>
-                                        <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400 text-center">Period</th>
+                                        <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400 text-center">Date</th>
                                         <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400 text-right">Amount</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-primary/10">
-                                    {royalties.map((item, idx) => (
-                                        <tr key={idx} className="hover:bg-primary/10 transition-colors group">
+                                    {royalties.map((item) => (
+                                        <tr key={item.id} className="hover:bg-primary/10 transition-colors group">
                                             <td className="px-6 py-4">
                                                 <div className="flex flex-col">
-                                                    <span className="text-sm font-bold group-hover:text-primary transition-colors text-white uppercase">{item.track}</span>
+                                                    <span className="text-sm font-bold group-hover:text-primary transition-colors text-white uppercase">{item.song}</span>
                                                     <span className="text-[10px] text-slate-500 uppercase font-medium">{item.type}</span>
                                                 </div>
                                             </td>
                                             <td className="px-6 py-4 text-center">
-                                                <span className="text-xs bg-black text-slate-300 px-2 py-1 rounded border border-white/10 font-mono inline-block">{item.period}</span>
+                                                <span className="text-xs bg-black text-slate-300 px-2 py-1 rounded border border-white/10 font-mono inline-block">
+                                                    {item.paymentDate.toISOString().split('T')[0]}
+                                                </span>
                                             </td>
                                             <td className="px-6 py-4 text-right">
-                                                <span className={`text-sm font-bold ${item.amount.startsWith('$1,') ? 'text-emerald-400' : 'text-primary'}`}>{item.amount}</span>
+                                                <span className={`text-sm font-bold ${item.amount > 1000 ? 'text-emerald-400' : 'text-primary'}`}>
+                                                    ${item.amount.toFixed(2)}
+                                                </span>
                                             </td>
                                         </tr>
                                     ))}
