@@ -6,7 +6,8 @@ const logos = [
     { src: "/assets/apple_tv_white.png", alt: "Apple TV+" },
     { src: "/assets/riot_games_logo_white.png", alt: "Riot Games" },
     { src: "/assets/spotify_logo_white.png", alt: "Spotify" },
-    { src: "/assets/a24_white.png", alt: "A24" }
+    { src: "/assets/a24_white.png", alt: "A24" },
+    { src: "/assets/Sony_Music_Publishing_white_Logo.png", alt: "Sony Music Publishing" }
 ];
 
 export default function LogoCarousel() {
@@ -23,17 +24,12 @@ export default function LogoCarousel() {
                     className="flex gap-24 items-center"
                 >
                     {[...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
-                        <div key={index} className="flex items-center justify-center h-16 w-32 relative">
-                            <div
-                                className="h-8 md:h-12 w-full bg-white opacity-60 hover:opacity-100 transition-opacity absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                                title={logo.alt}
-                                style={{
-                                    WebkitMaskImage: `url(${logo.src})`,
-                                    maskImage: `url(${logo.src})`,
-                                    WebkitMaskSize: 'contain',
-                                    WebkitMaskRepeat: 'no-repeat',
-                                    WebkitMaskPosition: 'center'
-                                }}
+                        <div key={index} className="flex items-center justify-center p-4">
+                            <img
+                                src={logo.src}
+                                alt={logo.alt}
+                                style={{ height: '40px', filter: 'grayscale(1) brightness(2)' }}
+                                className="w-auto object-contain opacity-60 hover:opacity-100 transition-opacity"
                             />
                         </div>
                     ))}

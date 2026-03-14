@@ -26,11 +26,12 @@ const executives = [
     {
         id: "savehxpe",
         name: "SaveHxpe",
-        title: "Executive Producer / Artist",
+        title: "Recording Artist & Producer",
         image: "/assets/SAVEHXPE.jpg",
-        featured_credit: "Featured: Still Deciding (2022)",
+        featured_credit: "Featured Project: Still Deciding (2022) — Executive Producer / Primary Artist",
         bio: [
-            "SaveHxpe brings cutting-edge production and artistic vision, fusing modern electronic structures with profound lyrical architecture. Serving as a core pillar of the publishing group, his efforts spearhead international collaborations and bespoke compositions."
+            "A multi-dimensional creative force at the intersection of sonic innovation and visual storytelling. SaveHxpe functions as a primary recording artist and producer within the RADICAL ecosystem, specializing in the \"FIELD MODE\" aesthetic and dark, cinematic arrangements.",
+            "Merging high-fidelity production with an uncompromising visual identity to redefine the independent creative landscape."
         ]
     }
 ];
@@ -47,14 +48,14 @@ export default function DreMoonSection() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: index * 0.2 }}
-                            className="flex flex-col items-start"
+                            className="flex flex-col items-center text-center"
                         >
                             <img src={exec.image} alt={exec.name} className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full mb-8 filter grayscale" />
                             <h2 className="text-sm text-gray-400 tracking-[0.3em] font-bold uppercase mb-4">{exec.title}</h2>
                             <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-white leading-none">{exec.name}</h3>
 
                             {exec.featured_credit && (
-                                <p className="text-white/60 font-mono text-sm tracking-widest mb-8 border-l border-white/20 pl-4">{exec.featured_credit}</p>
+                                <p className="text-white/60 font-mono text-sm tracking-widest mb-8">{exec.featured_credit}</p>
                             )}
 
                             <div className="space-y-6">

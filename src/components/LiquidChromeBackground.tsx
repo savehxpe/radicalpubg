@@ -20,9 +20,9 @@ const ChromePlane = () => {
             materialRef.current.uniforms.uScroll.value = scrollY * 0.002;
 
             // Map scroll speed to target amplitude (clamp to avoid extreme values)
-            const speed = Math.min(scrollDelta * 0.1, 1.5);
-            // If scrolling, increase target amplitude quickly. If not, slowly return to 0 (flat)
-            targetAmp.current = THREE.MathUtils.lerp(targetAmp.current, speed > 0.01 ? speed : 0.0, delta * 3.0);
+            const speed = Math.min(scrollDelta * 0.1, 2.5);
+            // If scrolling, increase target amplitude quickly. If not, slowly return to 0.8 to keep ripples visible
+            targetAmp.current = THREE.MathUtils.lerp(targetAmp.current, speed > 0.01 ? speed + 0.8 : 0.8, delta * 3.0);
 
             materialRef.current.uniforms.uAmplitude.value = targetAmp.current;
         }
