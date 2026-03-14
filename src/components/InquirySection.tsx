@@ -31,7 +31,7 @@ export const InquirySection: React.FC = () => {
                 <h3 className="text-xs md:text-sm text-gray-400 uppercase tracking-widest mb-12">OFFICE OF THE CEO</h3>
 
                 <div className="space-y-2 mb-12 text-sm md:text-base tracking-wide border-l-4 border-white/20 pl-4">
-                    <p>TO: ADMINISTRATION / <span className="text-gray-400">SYNC LICENSING</span></p>
+                    <p>TO: ADMINISTRATION / SYNC LICENSING</p>
                     <p>RE: NEW PARTNERSHIP INQUIRY</p>
                 </div>
 

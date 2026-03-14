@@ -30,8 +30,8 @@ const executives = [
         image: "/assets/SAVEHXPE.jpg",
         featured_credit: "Featured Project: Still Deciding (2022) — Executive Producer / Primary Artist",
         bio: [
-            "A multi-dimensional creative force at the intersection of sonic innovation and visual storytelling. SaveHxpe functions as a primary recording artist and producer within the RADICAL ecosystem, specializing in his signature \"FIELD MODE\" aesthetic and dark, cinematic arrangements.",
-            "Merging high-fidelity production with an uncompromising visual identity to redefine the independent creative landscape through the lens of FIELD MODE's raw, technical minimalism."
+            "SaveHxpe integrates dark-cinematic 'FIELD_MODE' aesthetics into sound. A multi-dimensional creative force at the intersection of sonic innovation and visual storytelling.",
+            "SaveHxpe functions as a primary recording artist and producer within the RADICAL ecosystem, merging high-fidelity production with an uncompromising visual identity."
         ]
     }
 ];

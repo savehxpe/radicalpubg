@@ -15,6 +15,10 @@ const ChromePlane = () => {
         };
     }, []);
 
+    const targetFreq = useRef(1.5);
+    const currentFreq = useRef(1.5);
+    const currentAmp = useRef(0);
+
     useFrame(() => {
         if (materialRef.current) {
             timer.current.update();
@@ -27,10 +31,20 @@ const ChromePlane = () => {
 
             materialRef.current.uniforms.uScroll.value = scrollY * 0.002;
 
-            // Map frequency to Scroll Velocity ONLY
+            // Target frequency based on scroll velocity
             const speed = Math.min(scrollDelta * 0.5, 4.0);
-            materialRef.current.uniforms.uAmplitude.value = 0.5; // Constant amplitude as per CORE_UI_LOGIC
-            materialRef.current.uniforms.uFreq.value = speed > 0.1 ? speed : 1.5;
+            targetFreq.current = speed > 0.1 ? speed : 1.5;
+
+            // LERP for smooth liquid transitions (factor 0.05 as per CORE_UI_LOGIC)
+            const lerpFactor = 0.05;
+            currentFreq.current = THREE.MathUtils.lerp(currentFreq.current, targetFreq.current, lerpFactor);
+
+            // Ripples ONLY on scroll; Return to 0 amplitude when idle
+            const targetAmpValue = speed > 0.01 ? 0.5 : 0.0;
+            currentAmp.current = THREE.MathUtils.lerp(currentAmp.current, targetAmpValue, lerpFactor);
+
+            materialRef.current.uniforms.uFreq.value = currentFreq.current;
+            materialRef.current.uniforms.uAmplitude.value = currentAmp.current;
         }
     });
 

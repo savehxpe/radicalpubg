@@ -30,11 +30,12 @@ export default function LogoCarousel() {
                                 alt={logo.alt}
                                 style={{
                                     height: '40px',
-                                    filter: 'brightness(2) invert(1)',
+                                    filter: 'brightness(2)',
                                     opacity: 1,
-                                    display: 'block !important'
+                                    display: 'block !important',
+                                    imageRendering: 'crisp-edges'
                                 }}
-                                className="w-auto object-contain transition-opacity hover:opacity-80 appearance-none pointer-events-none"
+                                className="w-auto object-contain transition-opacity hover:opacity-80 appearance-none pointer-events-none image-render-crisp"
                                 onError={(e) => {
                                     // Fallback for debugging if assets fail
                                     e.currentTarget.style.display = 'none';
