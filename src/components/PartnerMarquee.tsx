@@ -13,26 +13,26 @@ const PARTNER_LOGOS: Partner[] = [
     { name: 'Spotify', src: '/assets/spotify_white_logo.png' },
     { name: 'Boominati Worldwide', src: '/assets/Boominati_Worldwide_white_logo.png' },
     { name: 'Freebandz', src: '/assets/freebandz_white_logo.png' },
-    { name: 'Riot Games', src: '/assets/riot_games_logo_white.png' }
+    { name: 'Riot Games', src: '/assets/riot_games_logo_white.png' },
+    { name: 'Marvel', src: '/assets/marvel_white_logo.png' }
 ];
 
 export default function PartnerMarquee() {
     return (
         <section
-            className="h-24 w-full relative overflow-hidden bg-black flex items-center border-y border-white/10"
-            style={{ zIndex: 50 }}
+            className="w-full h-[100px] overflow-hidden flex items-center bg-black relative z-50 border-y border-white/10"
         >
             <div className="flex w-[200%] animate-marquee items-center">
-                {/* Render two identical sets to create the infinite loop */}
-                {[...PARTNER_LOGOS, ...PARTNER_LOGOS].map((partner, index) => (
+                {/* Render identical sets to create the infinite loop */}
+                {[...PARTNER_LOGOS, ...PARTNER_LOGOS, ...PARTNER_LOGOS].map((partner, index) => (
                     <div
                         key={index}
-                        className="flex-shrink-0 flex items-center justify-center w-[15%] md:w-[12%]"
+                        className="flex-shrink-0 flex items-center justify-center px-12"
                     >
                         <img
                             src={partner.src}
                             alt={`${partner.name} logo`}
-                            className="h-10 w-auto object-contain opacity-100"
+                            className="h-[40px] w-auto object-contain opacity-100"
                             style={{ filter: 'brightness(2) invert(1) grayscale(1)' }}
                         />
                     </div>
