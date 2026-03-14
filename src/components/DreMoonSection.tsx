@@ -98,7 +98,9 @@ export default function DreMoonSection() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
+                            className="flex flex-col items-start"
                         >
+                            <img src="/assets/DRE_MOON.jpeg" alt="Dre Moon" className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full mb-8 filter grayscale" />
                             <h2 className="text-sm text-gray-400 tracking-[0.3em] font-bold uppercase mb-4">Chief Executive Officer</h2>
                             <h3 className="text-5xl md:text-6xl font-black uppercase tracking-tighter mb-8 text-white leading-none">Dre Moon</h3>
 

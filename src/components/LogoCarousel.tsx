@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
 
 const logos = [
-    { src: "/assets/MARVEL_LOGO.png", alt: "MARVEL" },
-    { src: "/assets/hbo_max_logo.png", alt: "HBO MAX" },
-    { src: "/assets/apple_tv_logo.png", alt: "APPLE TV+" },
-    { src: "/assets/NETFLIX_LOGO.png", alt: "NETFLIX" },
-    { src: "/assets/a24_logo.png", alt: "A24" },
-    { src: "/assets/riot_games_logo.png", alt: "RIOT GAMES" },
-    { src: "/assets/spotify_logo.png", alt: "SPOTIFY" }
+    { src: "/assets/logo_1.png", alt: "PARTNER 1" },
+    { src: "/assets/logo_2.png", alt: "PARTNER 2" },
+    { src: "/assets/logo_3.png", alt: "PARTNER 3" },
+    { src: "/assets/logo_4.png", alt: "PARTNER 4" },
+    { src: "/assets/logo_5.png", alt: "PARTNER 5" },
+    { src: "/assets/logo_6.png", alt: "PARTNER 6" },
+    { src: "/assets/logo_7.png", alt: "PARTNER 7" }
 ];
 
 export default function LogoCarousel() {
@@ -28,7 +28,7 @@ export default function LogoCarousel() {
                             <img
                                 src={logo.src}
                                 alt={logo.alt}
-                                className="max-h-8 md:max-h-12 w-auto object-contain grayscale opacity-60 hover:opacity-100 transition-opacity cursor-default absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                                className="max-h-8 md:max-h-12 w-auto object-contain grayscale invert opacity-60 hover:opacity-100 transition-opacity cursor-default absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                             />
                         </div>
                     ))}

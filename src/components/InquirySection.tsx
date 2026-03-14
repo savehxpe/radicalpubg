@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../lib/firebase';
+import { motion } from 'framer-motion';
 
 export const InquirySection: React.FC = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -35,13 +36,18 @@ export const InquirySection: React.FC = () => {
                 </div>
 
                 {status === 'success' ? (
-                    <div className="text-green-500 font-bold tracking-widest mt-8 border-t border-b border-green-500/30 py-6 text-center bg-green-900/10 shadow-lg">
-                        [ INQUIRY LOGGED. THE TEAM WILL REVIEW AND RESPOND ACCORDINGLY. ]
-                    </div>
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1 }}
+                        className="text-white font-bold tracking-[0.2em] mt-8 py-12 text-center"
+                    >
+                        INQUIRY LOGGED. THE TEAM WILL REVIEW AND RESPOND ACCORDINGLY.
+                    </motion.div>
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-8">
                         <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-4 group">
-                            <label className="text-sm tracking-wide uppercase min-w-[100px] shrink-0 text-gray-400 group-focus-within:text-white transition-colors">[NAME]</label>
+                            <label className="text-sm tracking-wide uppercase min-w-[100px] shrink-0 text-gray-400 group-focus-within:text-white transition-colors">NAME</label>
                             <input
                                 type="text"
                                 required
@@ -52,7 +58,7 @@ export const InquirySection: React.FC = () => {
                         </div>
 
                         <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-4 group">
-                            <label className="text-sm tracking-wide uppercase min-w-[100px] shrink-0 text-gray-400 group-focus-within:text-white transition-colors">[EMAIL]</label>
+                            <label className="text-sm tracking-wide uppercase min-w-[100px] shrink-0 text-gray-400 group-focus-within:text-white transition-colors">EMAIL</label>
                             <input
                                 type="email"
                                 required
@@ -63,7 +69,7 @@ export const InquirySection: React.FC = () => {
                         </div>
 
                         <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-4 group">
-                            <label className="text-sm tracking-wide uppercase min-w-[100px] shrink-0 text-gray-400 group-focus-within:text-white transition-colors">[MESSAGE]</label>
+                            <label className="text-sm tracking-wide uppercase min-w-[100px] shrink-0 text-gray-400 group-focus-within:text-white transition-colors">MESSAGE</label>
                             <input
                                 type="text"
                                 required
@@ -73,16 +79,16 @@ export const InquirySection: React.FC = () => {
                             />
                         </div>
 
-                        <div className="pt-8 flex justify-end">
+                        <div className="pt-8 flex justify-center">
                             <button
                                 type="submit"
                                 disabled={status === 'loading'}
-                                className="w-full md:w-auto px-8 py-3 border border-gray-500 hover:border-white hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-widest text-sm font-bold disabled:opacity-50"
+                                className="px-8 py-3 text-gray-400 hover:text-white transition-all duration-300 uppercase tracking-[0.2em] text-sm font-bold disabled:opacity-50"
                             >
-                                {status === 'loading' ? '[PROCESSING...]' : '[SUBMIT INQUIRY]'}
+                                {status === 'loading' ? 'PROCESSING...' : 'SUBMIT INQUIRY'}
                             </button>
                         </div>
-                        {status === 'error' && <div className="text-red-500 text-sm text-center border border-red-500 bg-red-900/20 p-2 mt-4">[TRANSMISSION FAILED. VERIFY CONNECTION AND RETRY.]</div>}
+                        {status === 'error' && <div className="text-red-500 text-sm text-center border border-red-500 bg-red-900/20 p-2 mt-4">TRANSMISSION FAILED. VERIFY CONNECTION AND RETRY.</div>}
                     </form>
                 )}
             </div>

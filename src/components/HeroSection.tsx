@@ -65,6 +65,15 @@ export default function HeroSection() {
                     <span className="text-white text-xs font-bold uppercase tracking-[0.3em]">Global Publishing & Licensing</span>
                 </motion.div>
 
+                <motion.h1
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1.2, ease: "easeOut" }}
+                    className="text-7xl md:text-9xl font-black uppercase tracking-[0.1em] text-white mb-4"
+                >
+                    RADICAL
+                </motion.h1>
+
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -73,7 +82,7 @@ export default function HeroSection() {
                 >
                     <LogoErrorBoundary>
                         <div className="h-48 md:h-64 w-full relative">
-                            <React.Suspense fallback={<div className="flex items-center justify-center h-full w-full"><h1 className="text-5xl md:text-7xl font-black tracking-widest text-white/50 animate-pulse">RADICAL</h1></div>}>
+                            <React.Suspense fallback={<div className="flex items-center justify-center h-full w-full"></div>}>
                                 <Canvas camera={{ position: [0, 0, 5], fov: 50 }} gl={{ failIfMajorPerformanceCaveat: false }}>
                                     <ambientLight intensity={1} />
                                     <RotatingLogo />

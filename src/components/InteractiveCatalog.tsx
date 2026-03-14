@@ -20,6 +20,22 @@ const catalogItems = [
     },
     {
         id: 3,
+        title: "DRUNK IN LOVE",
+        artist: "BEYONCÉ",
+        role: "Co-Producer",
+        year: "2013",
+        coverArt: "/assets/CATALOG_3_BEYONCÉ_DRUNK_IN_LOVE.webp",
+    },
+    {
+        id: 4,
+        title: "AFTER HOURS",
+        artist: "THE WEEKND",
+        role: "Producer",
+        year: "2020",
+        coverArt: "/assets/CATALOG_4_THE_WEEKND_AFTER_HOURS.webp",
+    },
+    {
+        id: 5,
         title: "STILL DECIDING",
         artist: "SAVEHXPE",
         role: "Executive Producer",
@@ -96,19 +112,23 @@ export default function InteractiveCatalog() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 max-w-7xl mx-auto">
-                    {catalogItems.map((item, index) => (
-                        <motion.div
-                            key={item.id}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
-                            className="flex justify-center"
-                        >
-                            <CatalogCard item={item} />
-                        </motion.div>
-                    ))}
+                <div className="relative w-full max-w-7xl mx-auto overflow-hidden">
+                    {/* Fade edges */}
+                    <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-background-dark to-transparent z-10 pointer-events-none"></div>
+                    <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-background-dark to-transparent z-10 pointer-events-none"></div>
+
+                    <motion.div
+                        animate={{ x: [0, -2000] }}
+                        transition={{ repeat: Infinity, ease: "linear", duration: 60 }}
+                        className="flex gap-6 items-center py-8"
+                        style={{ width: "max-content" }}
+                    >
+                        {[...catalogItems, ...catalogItems, ...catalogItems].map((item, index) => (
+                            <div key={`${item.id}-${index}`} className="w-64 md:w-72 lg:w-80 flex-shrink-0">
+                                <CatalogCard item={item} />
+                            </div>
+                        ))}
+                    </motion.div>
                 </div>
             </div>
         </section>

@@ -5,19 +5,33 @@ import * as THREE from 'three';
 const ChromePlane = () => {
     const materialRef = useRef<THREE.ShaderMaterial>(null);
     const timer = useRef(new THREE.Timer());
+    const lastScrollY = useRef(0);
+    const targetAmp = useRef(0);
 
-    useFrame(() => {
+    useFrame((_, delta) => {
         if (materialRef.current) {
             timer.current.update();
             materialRef.current.uniforms.uTime.value = timer.current.getElapsed();
+
             const scrollY = window.scrollY || 0;
+            const scrollDelta = Math.abs(scrollY - lastScrollY.current);
+            lastScrollY.current = scrollY;
+
             materialRef.current.uniforms.uScroll.value = scrollY * 0.002;
+
+            // Map scroll speed to target amplitude (clamp to avoid extreme values)
+            const speed = Math.min(scrollDelta * 0.1, 1.5);
+            // If scrolling, increase target amplitude quickly. If not, slowly return to 0 (flat)
+            targetAmp.current = THREE.MathUtils.lerp(targetAmp.current, speed > 0.01 ? speed : 0.0, delta * 3.0);
+
+            materialRef.current.uniforms.uAmplitude.value = targetAmp.current;
         }
     });
 
     const vertexShader = `
         uniform float uTime;
         uniform float uScroll;
+        uniform float uAmplitude;
         varying vec2 vUv;
         varying vec3 vNormal;
         varying vec3 vViewPosition;
@@ -25,11 +39,10 @@ const ChromePlane = () => {
         void main() {
             vUv = uv;
             vec3 pos = position;
-            // Wave ripples toward left and right
+            // Wave ripples toward left and right, driven by scroll
             float freq = 2.0;
-            float amp = 1.2;
-            pos.z += sin(pos.x * freq + uTime * 1.5 + uScroll) * amp;
-            pos.z += sin(pos.y * freq * 0.8 + uTime * 1.0) * amp * 0.8;
+            pos.z += sin(pos.x * freq + uTime * 1.5 + uScroll) * uAmplitude;
+            pos.z += sin(pos.y * freq * 0.8 + uTime * 1.0) * (uAmplitude * 0.8);
 
             vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
             vViewPosition = -mvPosition.xyz;
@@ -77,7 +90,8 @@ const ChromePlane = () => {
                 blending={THREE.AdditiveBlending}
                 uniforms={{
                     uTime: { value: 0 },
-                    uScroll: { value: 0 }
+                    uScroll: { value: 0 },
+                    uAmplitude: { value: 0 }
                 }}
                 vertexShader={vertexShader}
                 fragmentShader={fragmentShader}
