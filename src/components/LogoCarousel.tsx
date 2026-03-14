@@ -1,13 +1,12 @@
 import { motion } from 'framer-motion';
 
 const logos = [
-    { src: "/assets/logo_1.png", alt: "PARTNER 1" },
-    { src: "/assets/logo_2.png", alt: "PARTNER 2" },
-    { src: "/assets/logo_3.png", alt: "PARTNER 3" },
-    { src: "/assets/logo_4.png", alt: "PARTNER 4" },
-    { src: "/assets/logo_5.png", alt: "PARTNER 5" },
-    { src: "/assets/logo_6.png", alt: "PARTNER 6" },
-    { src: "/assets/logo_7.png", alt: "PARTNER 7" }
+    { src: "/assets/marvel_white.png", alt: "Marvel" },
+    { src: "/assets/hbo_white.png", alt: "HBO Max" },
+    { src: "/assets/apple_tv_white.png", alt: "Apple TV+" },
+    { src: "/assets/riot_games_logo_white.png", alt: "Riot Games" },
+    { src: "/assets/spotify_logo_white.png", alt: "Spotify" },
+    { src: "/assets/a24_white.png", alt: "A24" }
 ];
 
 export default function LogoCarousel() {
@@ -23,12 +22,18 @@ export default function LogoCarousel() {
                     transition={{ repeat: Infinity, ease: "linear", duration: 40 }}
                     className="flex gap-24 items-center"
                 >
-                    {[...logos, ...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
+                    {[...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
                         <div key={index} className="flex items-center justify-center h-16 w-32 relative">
-                            <img
-                                src={logo.src}
-                                alt={logo.alt}
-                                className="max-h-8 md:max-h-12 w-auto object-contain grayscale invert opacity-60 hover:opacity-100 transition-opacity cursor-default absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                            <div
+                                className="h-8 md:h-12 w-full bg-white opacity-60 hover:opacity-100 transition-opacity absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                                title={logo.alt}
+                                style={{
+                                    WebkitMaskImage: `url(${logo.src})`,
+                                    maskImage: `url(${logo.src})`,
+                                    WebkitMaskSize: 'contain',
+                                    WebkitMaskRepeat: 'no-repeat',
+                                    WebkitMaskPosition: 'center'
+                                }}
                             />
                         </div>
                     ))}

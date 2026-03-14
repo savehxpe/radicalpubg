@@ -56,14 +56,7 @@ export default function HeroSection() {
 
             {/* Content */}
             <div className="relative z-20 container mx-auto px-6 text-center pt-20 flex flex-col items-center justify-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className="inline-block px-4 py-1 mb-6 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm"
-                >
-                    <span className="text-white text-xs font-bold uppercase tracking-[0.3em]">Global Publishing & Licensing</span>
-                </motion.div>
+
 
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
@@ -81,6 +74,15 @@ export default function HeroSection() {
                             </React.Suspense>
                         </div>
                     </LogoErrorBoundary>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="inline-block px-4 py-1 mb-6 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm"
+                >
+                    <span className="text-white text-xs font-bold uppercase tracking-[0.3em]">Global Publishing & Licensing</span>
                 </motion.div>
 
                 <motion.div
