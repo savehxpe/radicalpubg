@@ -55,7 +55,7 @@ function CatalogCard({ item }: { item: CatalogItem }) {
                 <img
                     src={item.cover_art}
                     alt={item.title}
-                    className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 group-hover:scale-105"
+                    className="w-full h-full object-cover filter grayscale(100%) contrast(1.2) group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 group-hover:scale-105"
                     onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.style.display = 'none';

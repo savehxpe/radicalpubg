@@ -41,26 +41,6 @@
     },
     {
         "id": "RAD-005",
-        "artist": "Chris Brown",
-        "title": "Royalty",
-        "year": "2015",
-        "executive": "Andy Kabamba",
-        "role": "A&R Executive",
-        "cover_art": "/assets/PRODUCTION_CREDITS_1.png",
-        "url": ""
-    },
-    {
-        "id": "RAD-006",
-        "artist": "Juice WRLD",
-        "title": "Armed and Dangerous",
-        "year": "2018",
-        "executive": "Dre Moon",
-        "role": "Producer",
-        "cover_art": "/assets/PRODUCTION_CREDITS_2.png",
-        "url": ""
-    },
-    {
-        "id": "RAD-007",
         "artist": "Juice WRLD",
         "title": "Armed and Dangerous",
         "year": "2018",
@@ -70,7 +50,7 @@
         "url": ""
     },
     {
-        "id": "RAD-008",
+        "id": "RAD-006",
         "artist": "Chris Brown",
         "title": "Royalty",
         "year": "2015",
@@ -80,7 +60,7 @@
         "url": ""
     },
     {
-        "id": "RAD-009",
+        "id": "RAD-007",
         "artist": "5 Seconds of Summer",
         "title": "Old Me",
         "year": "2020",
