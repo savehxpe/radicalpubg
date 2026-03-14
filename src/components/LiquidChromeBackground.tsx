@@ -1,13 +1,14 @@
-import React, { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
+import { Timer } from 'three';
 
 const ChromePlane = () => {
     const materialRef = useRef<THREE.ShaderMaterial>(null);
-    const timer = useRef(new THREE.Timer());
+    const timer = useRef(new Timer());
     const lastScrollY = useRef(0);
 
-    React.useEffect(() => {
+    useEffect(() => {
         return () => {
             if (materialRef.current) {
                 materialRef.current.dispose();
@@ -21,6 +22,7 @@ const ChromePlane = () => {
 
     useFrame(() => {
         if (materialRef.current) {
+            // THREE_JS_UPDATE: Use THREE.Timer to clear deprecation warning
             timer.current.update();
             const time = timer.current.getElapsed();
             materialRef.current.uniforms.uTime.value = time;
@@ -31,11 +33,10 @@ const ChromePlane = () => {
 
             materialRef.current.uniforms.uScroll.value = scrollY * 0.002;
 
-            // Target frequency based on scroll velocity
             const speed = Math.min(scrollDelta * 0.5, 4.0);
             targetFreq.current = speed > 0.1 ? speed : 1.5;
 
-            // LERP for smooth liquid transitions (factor 0.05 as per CORE_UI_LOGIC)
+            // BACKGROUND_PHYSICS: LERP factor 0.05
             const lerpFactor = 0.05;
             currentFreq.current = THREE.MathUtils.lerp(currentFreq.current, targetFreq.current, lerpFactor);
 
@@ -60,7 +61,6 @@ const ChromePlane = () => {
         void main() {
             vUv = uv;
             vec3 pos = position;
-            // Frequency driven by scroll speed
             pos.z += sin(pos.x * uFreq + uTime * 1.5 + uScroll) * uAmplitude;
             pos.z += sin(pos.y * uFreq * 0.8 + uTime * 1.0) * (uAmplitude * 0.8);
 
@@ -128,7 +128,7 @@ export const LiquidChromeBackground: React.FC = () => {
             className="fixed inset-0 w-full h-full pointer-events-none"
             style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}
         >
-            <Canvas camera={{ position: [0, 0, 5], fov: 75 }} gl={{ failIfMajorPerformanceCaveat: false }}>
+            <Canvas camera={{ position: [0, 0, 5], fov: 75 }} gl={{ antialias: true, alpha: true, failIfMajorPerformanceCaveat: false }}>
                 <ambientLight intensity={0.5} />
                 <ChromePlane />
             </Canvas>

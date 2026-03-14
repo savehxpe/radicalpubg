@@ -1,0 +1,62 @@
+[
+    {
+        "id": "RAD-001",
+        "artist": "Beyoncé",
+        "title": "Drunk in Love",
+        "year": "2013",
+        "executive": "Dre Moon",
+        "role": "Co-Producer",
+        "cover_art": "/assets/catalog_3.png",
+        "url": ""
+    },
+    {
+        "id": "RAD-002",
+        "artist": "SaveHxpe",
+        "title": "Still Deciding",
+        "year": "2022",
+        "executive": "SaveHxpe",
+        "role": "Recording Artist & Producer",
+        "cover_art": "/assets/CATALOG_5_SAVEHXPE_STILL_DECIDING.webp",
+        "url": ""
+    },
+    {
+        "id": "RAD-003",
+        "artist": "Future & Metro Boomin",
+        "title": "We Don't Trust You",
+        "year": "2024",
+        "executive": "Dre Moon",
+        "role": "Producer",
+        "cover_art": "/assets/CATALOG_2_FUTURE_I_NEVER_LIKED_YOU.webp",
+        "url": ""
+    },
+    {
+        "id": "RAD-004",
+        "artist": "The Weeknd",
+        "title": "Heartless",
+        "year": "2019",
+        "executive": "Dre Moon",
+        "role": "Producer",
+        "cover_art": "/assets/CATALOG_4_THE_WEEKND_AFTER_HOURS.webp",
+        "url": ""
+    },
+    {
+        "id": "RAD-005",
+        "artist": "Chris Brown",
+        "title": "Royalty",
+        "year": "2015",
+        "executive": "Andy Kabamba",
+        "role": "A&R Executive",
+        "cover_art": "/assets/PRODUCTION_CREDITS_1.png",
+        "url": ""
+    },
+    {
+        "id": "RAD-006",
+        "artist": "Juice WRLD",
+        "title": "Armed and Dangerous",
+        "year": "2018",
+        "executive": "Dre Moon",
+        "role": "Producer",
+        "cover_art": "/assets/PRODUCTION_CREDITS_2.png",
+        "url": ""
+    }
+]
