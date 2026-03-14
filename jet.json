@@ -1,0 +1,15 @@
+{
+    "name": "RadicalPubG",
+    "label": "RADICAL Publishing Group",
+    "description": "High-fidelity interactive web experience with 3D Catalog and Artist Portal",
+    "category": "Dashboard",
+    "props": [],
+    "config": {
+        "scripts": [
+            "https://raw.githubusercontent.com/savehxpe/radicalpubg/main/radical-app/dist/assets/index-B3j5AjPI.js"
+        ],
+        "styles": [
+            "https://raw.githubusercontent.com/savehxpe/radicalpubg/main/radical-app/dist/assets/index-DYgGyx13.css"
+        ]
+    }
+}
