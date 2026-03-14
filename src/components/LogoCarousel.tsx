@@ -1,19 +1,17 @@
 import { motion } from 'framer-motion';
 
 const logos = [
-    { src: "/assets/marvel_white_logo.png", alt: "Marvel" },
-    { src: "/assets/hbo_white_logo.png", alt: "HBO Max" },
-    { src: "/assets/apple_tv_white_logo.png", alt: "Apple TV+" },
-    { src: "/assets/netflix_white_logo.png", alt: "Netflix" },
-    { src: "/assets/riot_games_logo_white.png", alt: "Riot Games" },
-    { src: "/assets/spotify_logo_white.png", alt: "Spotify" },
     { src: "/assets/a24_white_logo.png", alt: "A24" },
-    { src: "/assets/Sony_Music_Publishing_white_Logo.png", alt: "Sony Music" }
+    { src: "/assets/Sony_Music_Publishing_white_Logo.png", alt: "Sony Music" },
+    { src: "/assets/hbo_white_logo.png", alt: "HBO Max" },
+    { src: "/assets/netflix_white_logo.png", alt: "Netflix" },
+    { src: "/assets/apple_tv_white_logo.png", alt: "Apple" },
+    { src: "/assets/spotify_logo_white.png", alt: "Spotify" }
 ];
 
 export default function LogoCarousel() {
     return (
-        <section className="py-12 border-y border-white/10 overflow-hidden bg-black flex justify-center relative z-30">
+        <section className="py-12 border-y border-white/10 overflow-hidden bg-black flex justify-center relative z-10">
             <div className="flex whitespace-nowrap group w-full max-w-7xl relative">
                 {/* Fade edges */}
                 <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
@@ -29,7 +27,7 @@ export default function LogoCarousel() {
                             <img
                                 src={logo.src}
                                 alt={logo.alt}
-                                style={{ height: '45px', filter: 'brightness(0) invert(1)', opacity: 1 }}
+                                style={{ height: '40px', filter: 'brightness(0) invert(1)', opacity: 1 }}
                                 className="w-auto object-contain transition-opacity hover:opacity-80 appearance-none"
                             />
                         </div>
