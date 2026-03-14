@@ -22,9 +22,9 @@ export default function ServicesSection() {
     return (
         <section id="services" className="px-6 py-20 lg:px-20 bg-background-dark text-slate-100">
             <div className="max-w-7xl mx-auto">
-                <div className="flex items-end justify-between mb-16">
+                <div className="flex flex-col items-center justify-center text-center mb-16">
                     <div className="max-w-xl">
-                        <h2 className="text-4xl font-black uppercase tracking-tight mb-4 text-white neon-glow-blue">
+                        <h2 className="text-4xl font-black uppercase tracking-tight mb-4 text-white neon-glow-white">
                             Our Core Capabilities
                         </h2>
                         <p className="text-slate-400 text-lg">Integrated solutions for rights-holders, composers, and recording artists.</p>

@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Stars, PerspectiveCamera } from '@react-three/drei';
+import { Stars, PerspectiveCamera, useTexture } from '@react-three/drei';
+import * as THREE from 'three';
 
 function CyberGrid() {
     const gridRef = useRef<any>(null);
@@ -14,8 +15,28 @@ function CyberGrid() {
 
     return (
         <group>
-            <gridHelper ref={gridRef} args={[100, 100, '#bc13fe', '#00ffff']} position={[0, -2, -10]} rotation={[0, 0, 0]} />
+            <gridHelper ref={gridRef} args={[100, 100, '#333333', '#111111']} position={[0, -2, -10]} rotation={[0, 0, 0]} />
         </group>
+    );
+}
+
+function RotatingLogo() {
+    const meshRef = useRef<THREE.Mesh>(null);
+    const texture = useTexture('/assets/RADICAL_LOGO.png');
+    texture.colorSpace = THREE.SRGBColorSpace;
+
+    useFrame((state) => {
+        if (meshRef.current) {
+            meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.5; // Smooth back and forth, or continuous rotation. Wait, "smooth y-axis rotation". Continuous: state.clock.elapsedTime * 0.5
+            meshRef.current.rotation.y = state.clock.elapsedTime * 0.5;
+        }
+    });
+
+    return (
+        <mesh ref={meshRef}>
+            <planeGeometry args={[8, 1.6]} />
+            <meshBasicMaterial map={texture} transparent={true} side={THREE.DoubleSide} alphaTest={0.01} />
+        </mesh>
     );
 }
 
@@ -39,31 +60,31 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, ease: "easeOut" }}
-                    className="inline-block px-4 py-1 mb-6 border border-primary/30 rounded-full bg-primary/5 backdrop-blur-sm"
+                    className="inline-block px-4 py-1 mb-6 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm"
                 >
-                    <span className="text-primary text-xs font-bold uppercase tracking-[0.3em]">System Online: v2.0.4</span>
+                    <span className="text-white text-xs font-bold uppercase tracking-[0.3em]">Global Publishing & Licensing</span>
                 </motion.div>
 
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-                    className="mb-8"
+                    className="mb-8 w-full max-w-4xl h-48 md:h-64 cursor-grab active:cursor-grabbing"
                 >
-                    <h1 className="text-slate-100 text-6xl md:text-9xl font-black leading-none tracking-tighter uppercase neon-glow-blue flex flex-col">
-                        <span>RADICAL</span>
-                        <span className="text-2xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-white to-primary mt-2">Publishing Group</span>
-                    </h1>
+                    <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
+                        <ambientLight intensity={1} />
+                        <RotatingLogo />
+                    </Canvas>
                 </motion.div>
 
                 <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1, delay: 0.8 }}
-                    className="text-slate-400 text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed font-light tracking-wide uppercase border-l-4 border-accent-purple pl-4 text-left"
+                    className="text-slate-400 text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed font-light tracking-widest uppercase text-center"
                 >
-                    Where Outsiders <br className="hidden md:block" />
-                    <span className="text-primary font-bold">Own The Future</span>
+                    Empowering The Future <br className="hidden md:block" />
+                    <span className="text-white font-bold">Of Sound</span>
                 </motion.p>
 
                 <motion.div
@@ -72,9 +93,9 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 1 }}
                     className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full"
                 >
-                    <button className="w-full sm:w-auto px-10 py-4 bg-primary text-background-dark font-black text-lg rounded-xl uppercase tracking-widest hover:shadow-[0_0_30px_rgba(0,255,255,0.4)] hover:scale-105 transition-all">
-                        Enter The Vault
-                    </button>
+                    <a href="#catalog" className="w-full sm:w-auto px-10 py-4 bg-white text-black font-black text-lg rounded-xl uppercase tracking-widest hover:bg-slate-200 hover:scale-105 transition-all outline-none">
+                        Explore Catalog
+                    </a>
                 </motion.div>
             </div>
         </section>
