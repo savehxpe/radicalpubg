@@ -24,7 +24,7 @@ const catalogItems = [
         artist: "BEYONCÉ",
         role: "Co-Producer",
         year: "2013",
-        coverArt: "/assets/catalog_3.webp",
+        coverArt: "/assets/catalog_3.png",
     },
     {
         id: 4,

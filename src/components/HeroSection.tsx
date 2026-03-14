@@ -27,7 +27,7 @@ class LogoErrorBoundary extends Component<{ children: ReactNode }, { hasError: b
 
 function RotatingLogo() {
     const meshRef = useRef<THREE.Mesh>(null);
-    const texture = useTexture('/assets/MAIN_LOGO.png');
+    const texture = useTexture('/assets/RADICAL_LOGO_WHITE.png');
     texture.colorSpace = THREE.SRGBColorSpace;
     const timer = useRef(new THREE.Timer());
 
