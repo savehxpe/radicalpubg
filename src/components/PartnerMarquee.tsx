@@ -2,16 +2,15 @@
 interface Partner {
     name: string;
     src: string;
-    url?: string;
 }
 
 const PARTNER_LOGOS: Partner[] = [
-    { name: 'A24', src: '/assets/A24_white_logo.png' },
+    { name: 'A24', src: '/assets/a24_white_logo.png' },
     { name: 'Sony Music Publishing', src: '/assets/sony_music_publishing_white_logo.png' },
-    { name: 'HBO Max', src: '/assets/HBO_Max_white_logo.png' },
-    { name: 'Netflix', src: '/assets/Netflix_white_logo.png' },
-    { name: 'Apple TV+', src: '/assets/Apple_TV_white_logo.png' },
-    { name: 'Spotify', src: '/assets/Spotify_white_logo.png' },
+    { name: 'HBO Max', src: '/assets/hbo_white_logo.png' },
+    { name: 'Netflix', src: '/assets/netflix_white_logo.png' },
+    { name: 'Apple+', src: '/assets/apple_white_logo.png' },
+    { name: 'Spotify', src: '/assets/spotify_white_logo.png' },
     { name: 'Boominati Worldwide', src: '/assets/Boominati_Worldwide_white_logo.png' },
     { name: 'Freebandz', src: '/assets/freebandz_white_logo.png' },
     { name: 'Riot Games', src: '/assets/riot_games_logo_white.png' }
@@ -34,19 +33,7 @@ export default function PartnerMarquee() {
                             src={partner.src}
                             alt={`${partner.name} logo`}
                             className="h-10 w-auto object-contain opacity-100"
-                            style={{ filter: 'brightness(2) invert(1)' }}
-                            onError={(e) => {
-                                // Fallback to text if the image fails to load
-                                const target = e.target as HTMLImageElement;
-                                target.style.display = 'none';
-                                if (target.parentElement && !target.dataset.failed) {
-                                    target.dataset.failed = "true";
-                                    const span = document.createElement('span');
-                                    span.className = "text-white text-[10px] font-mono tracking-widest uppercase opacity-40";
-                                    span.innerText = partner.name;
-                                    target.parentElement.appendChild(span);
-                                }
-                            }}
+                            style={{ filter: 'brightness(2) invert(1) grayscale(1)' }}
                         />
                     </div>
                 ))}
