@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
 
 const logos = [
-    { src: "/assets/marvel_white.png", alt: "Marvel" },
-    { src: "/assets/hbo_white.png", alt: "HBO Max" },
-    { src: "/assets/apple_tv_white.png", alt: "Apple TV+" },
+    { src: "/assets/marvel_white_logo.png", alt: "Marvel" },
+    { src: "/assets/hbo_white_logo.png", alt: "HBO Max" },
+    { src: "/assets/apple_tv_white_logo.png", alt: "Apple TV+" },
+    { src: "/assets/netflix_white_logo.png", alt: "Netflix" },
     { src: "/assets/riot_games_logo_white.png", alt: "Riot Games" },
     { src: "/assets/spotify_logo_white.png", alt: "Spotify" },
-    { src: "/assets/a24_white.png", alt: "A24" },
-    { src: "/assets/Sony_Music_Publishing_white_Logo.png", alt: "Sony Music Publishing" }
+    { src: "/assets/a24_white_logo.png", alt: "A24" },
+    { src: "/assets/Sony_Music_Publishing_white_Logo.png", alt: "Sony Music" }
 ];
 
 export default function LogoCarousel() {
@@ -28,7 +29,7 @@ export default function LogoCarousel() {
                             <img
                                 src={logo.src}
                                 alt={logo.alt}
-                                style={{ height: '40px', filter: 'grayscale(1) brightness(2)' }}
+                                style={{ height: '40px', filter: 'brightness(0) invert(1)' }}
                                 className="w-auto object-contain opacity-60 hover:opacity-100 transition-opacity"
                             />
                         </div>
