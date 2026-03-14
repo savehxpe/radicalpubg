@@ -21,7 +21,7 @@ export default function PartnerMarquee() {
                         key={index}
                         src={src}
                         alt="Partner Logo"
-                        className="h-[40px] w-auto object-contain filter brightness-200 invert grayscale flex-shrink-0"
+                        className="h-[40px] w-auto object-contain opacity-100 flex-shrink-0"
                     />
                 ))}
             </div>
