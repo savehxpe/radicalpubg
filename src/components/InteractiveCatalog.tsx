@@ -55,14 +55,7 @@ function CatalogCard({ item }: { item: CatalogItem }) {
                 <img
                     src={item.cover_art}
                     alt={item.title}
-                    className="w-full h-full object-cover filter grayscale(100%) contrast(1.2) group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 group-hover:scale-105"
-                    onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        if (target.parentElement) {
-                            target.parentElement.classList.add('bg-black', 'border', 'border-white/20');
-                        }
-                    }}
+                    className="w-full h-full object-cover filter grayscale contrast-[1.2] group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
 
