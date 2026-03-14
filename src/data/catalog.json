@@ -58,5 +58,35 @@
         "role": "Producer",
         "cover_art": "/assets/PRODUCTION_CREDITS_2.png",
         "url": ""
+    },
+    {
+        "id": "RAD-007",
+        "artist": "Juice WRLD",
+        "title": "Armed and Dangerous",
+        "year": "2018",
+        "executive": "Dre Moon",
+        "role": "Producer",
+        "cover_art": "/assets/juice_armed_cover.png",
+        "url": ""
+    },
+    {
+        "id": "RAD-008",
+        "artist": "Chris Brown",
+        "title": "Royalty",
+        "year": "2015",
+        "executive": "Dre Moon",
+        "role": "Producer",
+        "cover_art": "/assets/cb_royalty_cover.png",
+        "url": ""
+    },
+    {
+        "id": "RAD-009",
+        "artist": "5 Seconds of Summer",
+        "title": "Old Me",
+        "year": "2020",
+        "executive": "Dre Moon",
+        "role": "Producer",
+        "cover_art": "/assets/5sos_old_me_cover.png",
+        "url": ""
     }
 ]
