@@ -5,16 +5,15 @@ interface Partner {
 }
 
 const PARTNER_LOGOS: Partner[] = [
-    { name: 'A24', src: '/assets/a24_white_logo.png' },
-    { name: 'Sony Music Publishing', src: '/assets/sony_music_publishing_white_logo.png' },
-    { name: 'HBO Max', src: '/assets/hbo_white_logo.png' },
-    { name: 'Netflix', src: '/assets/netflix_white_logo.png' },
-    { name: 'Apple+', src: '/assets/apple_white_logo.png' },
-    { name: 'Spotify', src: '/assets/spotify_white_logo.png' },
     { name: 'Boominati Worldwide', src: '/assets/Boominati_Worldwide_white_logo.png' },
     { name: 'Freebandz', src: '/assets/freebandz_white_logo.png' },
+    { name: 'Netflix', src: '/assets/netflix_white_logo.png' },
+    { name: 'Sony Music Publishing', src: '/assets/sony_music_publishing_white_logo.png' },
     { name: 'Riot Games', src: '/assets/riot_games_logo_white.png' },
-    { name: 'Marvel', src: '/assets/marvel_white_logo.png' }
+    { name: 'Spotify', src: '/assets/spotify_white_logo.png' },
+    { name: 'HBO Max', src: '/assets/hbo_white_logo.png' },
+    { name: 'Apple+', src: '/assets/apple_white_logo.png' },
+    { name: 'A24', src: '/assets/a24_white_logo.png' }
 ];
 
 export default function PartnerMarquee() {
