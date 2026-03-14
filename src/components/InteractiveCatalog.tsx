@@ -8,7 +8,7 @@ const catalogItems = [
         artist: "FUTURE",
         role: "Producer",
         year: "2017",
-        coverArt: "/assets/CATALOG_1_FUTURE_HNDRXX.png",
+        coverArt: "/assets/CATALOG_1_FUTURE_HNDRXX.webp",
     },
     {
         id: 2,
@@ -16,7 +16,7 @@ const catalogItems = [
         artist: "FUTURE",
         role: "Producer",
         year: "2022",
-        coverArt: "/assets/CATALOG_2_FUTURE_I_NEVER_LIKED_YOU.png",
+        coverArt: "/assets/CATALOG_2_FUTURE_I_NEVER_LIKED_YOU.webp",
     },
     {
         id: 3,
@@ -24,7 +24,7 @@ const catalogItems = [
         artist: "SAVEHXPE",
         role: "Executive Producer",
         year: "2022",
-        coverArt: "/assets/CATALOG_5_SAVEHXPE_STILL_DECIDING.png",
+        coverArt: "/assets/CATALOG_5_SAVEHXPE_STILL_DECIDING.webp",
     }
 ];
 

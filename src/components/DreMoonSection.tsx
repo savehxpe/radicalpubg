@@ -8,7 +8,7 @@ const dreMoonItems = [
         artist: "BEYONCÉ",
         role: "Co-Producer",
         year: "2013",
-        coverArt: "/assets/CATALOG_3_BEYONCÉ_DRUNK_IN_LOVE.png",
+        coverArt: "/assets/CATALOG_3_BEYONCÉ_DRUNK_IN_LOVE.webp",
     }
 ];
 

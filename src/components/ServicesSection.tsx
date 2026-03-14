@@ -5,17 +5,17 @@ export default function ServicesSection() {
         {
             title: "Publishing Administration",
             description: "Global registration and royalty collection across all DSPs and territories with transparent reporting.",
-            image: "/assets/publishing_administration.png"
+            image: "/assets/publishing_administration.webp"
         },
         {
             title: "Sync Licensing",
             description: "Direct pipeline to music supervisors for Film, TV, Ads, and AAA Gaming placements.",
-            image: "/assets/sync_licensing.png"
+            image: "/assets/sync_licensing.webp"
         },
         {
             title: "Creative Direction",
             description: "Strategic A&R, branding, and career development to maximize your catalog's market value.",
-            image: "/assets/creative_direction.png"
+            image: "/assets/creative_direction.webp"
         }
     ];
 
