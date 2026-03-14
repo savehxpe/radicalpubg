@@ -11,7 +11,7 @@ const logos = [
 
 export default function LogoCarousel() {
     return (
-        <section className="py-16 border-y border-white/10 overflow-hidden bg-black flex justify-center relative z-[99]">
+        <section className="py-16 border-y border-white/10 overflow-hidden bg-black flex justify-center relative z-[50] pointer-events-none" style={{ display: 'flex !important', opacity: '1 !important' }}>
             <div className="flex whitespace-nowrap group w-full max-w-7xl relative">
                 {/* Fade edges */}
                 <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
@@ -21,16 +21,18 @@ export default function LogoCarousel() {
                     animate={{ x: [0, -2000] }}
                     transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
                     className="flex gap-20 items-center"
+                    style={{ display: 'flex !important', opacity: '1 !important' }}
                 >
                     {[...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos, ...logos].map((logo, index) => (
-                        <div key={index} className="flex items-center justify-center px-4">
+                        <div key={index} className="flex items-center justify-center px-4" style={{ display: 'flex !important', opacity: '1 !important' }}>
                             <img
                                 src={logo.src}
                                 alt={logo.alt}
                                 style={{
                                     height: '40px',
-                                    filter: 'brightness(2) contrast(2)',
-                                    opacity: 1
+                                    filter: 'brightness(2) invert(1)',
+                                    opacity: 1,
+                                    display: 'block !important'
                                 }}
                                 className="w-auto object-contain transition-opacity hover:opacity-80 appearance-none pointer-events-none"
                                 onError={(e) => {

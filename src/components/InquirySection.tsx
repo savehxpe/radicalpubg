@@ -42,7 +42,7 @@ export const InquirySection: React.FC = () => {
                         transition={{ duration: 1 }}
                         className="text-white font-bold tracking-[0.2em] mt-8 py-12 text-center"
                     >
-                        INQUIRY LOGGED. THE TEAM WILL REVIEW AND RESPOND ACCORDINGLY.
+                        INQUIRY LOGGED. THE TEAM WILL REVIEW ACCORDINGLY.
                     </motion.div>
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-8">

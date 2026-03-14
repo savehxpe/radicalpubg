@@ -1,7 +1,7 @@
 
 export default function Navbar() {
     return (
-        <header className="fixed top-0 w-full z-50 flex items-center justify-between border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 py-4">
+        <header className="fixed top-0 w-full z-[100] flex items-center justify-between border-b border-white/10 bg-background-dark/80 backdrop-blur-md px-6 py-4">
             <div className="flex items-center">
                 <img src="/assets/RADICAL_LOGO_WHITE.png" alt="RADICAL Logo" className="h-12 md:h-16 w-auto object-contain" />
             </div>

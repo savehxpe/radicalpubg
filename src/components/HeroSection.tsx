@@ -80,7 +80,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-                    className="inline-block px-4 py-1 mb-24 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm"
+                    className="inline-block px-4 py-1 mb-8 border border-white/20 rounded-full bg-white/5 backdrop-blur-sm"
                 >
                     <span className="text-white text-xs font-bold uppercase tracking-[0.3em]">Global Publishing & Licensing</span>
                 </motion.div>
@@ -89,7 +89,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.2 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full mt-12"
+                    className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full mt-24"
                 >
                     <a href="#catalog" className="w-full sm:w-auto px-10 py-4 bg-white text-black font-black text-lg rounded-xl uppercase tracking-widest hover:bg-slate-200 hover:scale-105 transition-all outline-none">
                         Explore Catalog
