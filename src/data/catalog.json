@@ -46,7 +46,7 @@
         "year": "2018",
         "executive": "Dre Moon",
         "role": "Producer",
-        "cover_art": "/assets/juice_armed_cover.jpg",
+        "cover_art": "/assets/juice_armed_cover.jpg?v=2",
         "url": ""
     },
     {
@@ -56,7 +56,7 @@
         "year": "2015",
         "executive": "Dre Moon",
         "role": "Producer",
-        "cover_art": "/assets/cb_royalty_cover.jpg",
+        "cover_art": "/assets/cb_royalty_cover.jpg?v=2",
         "url": ""
     },
     {
@@ -66,7 +66,7 @@
         "year": "2020",
         "executive": "Dre Moon",
         "role": "Producer",
-        "cover_art": "/assets/5sos_old_me_cover.png",
+        "cover_art": "/assets/5sos_old_me_cover.png?v=2",
         "url": ""
     }
 ]
