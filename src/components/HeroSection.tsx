@@ -1,18 +1,40 @@
-import { useRef } from 'react';
+import React, { useRef, Component } from 'react';
+import type { ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 
+class LogoErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+    constructor(props: { children: ReactNode }) {
+        super(props);
+        this.state = { hasError: false };
+    }
+    static getDerivedStateFromError() {
+        return { hasError: true };
+    }
+    render() {
+        if (this.state.hasError) {
+            return (
+                <div className="flex items-center justify-center h-48 md:h-64 w-full">
+                    <h1 className="text-5xl md:text-7xl font-black tracking-widest uppercase text-white">RADICAL</h1>
+                </div>
+            );
+        }
+        return this.props.children;
+    }
+}
+
 function RotatingLogo() {
     const meshRef = useRef<THREE.Mesh>(null);
-    const texture = useTexture('/assets/RADICAL_LOGO.png');
+    const texture = useTexture('/assets/MAIN_LOGO.png');
     texture.colorSpace = THREE.SRGBColorSpace;
+    const timer = useRef(new THREE.Timer());
 
-    useFrame((state) => {
+    useFrame(() => {
+        timer.current.update();
         if (meshRef.current) {
-            meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.5) * 0.5; // Smooth back and forth, or continuous rotation. Wait, "smooth y-axis rotation". Continuous: state.clock.elapsedTime * 0.5
-            meshRef.current.rotation.y = state.clock.elapsedTime * 0.5;
+            meshRef.current.rotation.y = timer.current.getElapsed() * 0.5;
         }
     });
 
@@ -47,12 +69,18 @@ export default function HeroSection() {
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
-                    className="mb-8 w-full max-w-4xl h-48 md:h-64 cursor-grab active:cursor-grabbing"
+                    className="mb-8 w-full max-w-4xl cursor-grab active:cursor-grabbing"
                 >
-                    <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-                        <ambientLight intensity={1} />
-                        <RotatingLogo />
-                    </Canvas>
+                    <LogoErrorBoundary>
+                        <div className="h-48 md:h-64 w-full relative">
+                            <React.Suspense fallback={<div className="flex items-center justify-center h-full w-full"><h1 className="text-5xl md:text-7xl font-black tracking-widest text-white/50 animate-pulse">RADICAL</h1></div>}>
+                                <Canvas camera={{ position: [0, 0, 5], fov: 50 }} gl={{ failIfMajorPerformanceCaveat: false }}>
+                                    <ambientLight intensity={1} />
+                                    <RotatingLogo />
+                                </Canvas>
+                            </React.Suspense>
+                        </div>
+                    </LogoErrorBoundary>
                 </motion.div>
 
                 <motion.p

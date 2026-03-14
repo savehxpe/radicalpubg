@@ -4,10 +4,12 @@ import * as THREE from 'three';
 
 const ChromePlane = () => {
     const materialRef = useRef<THREE.ShaderMaterial>(null);
+    const timer = useRef(new THREE.Timer());
 
-    useFrame((state) => {
+    useFrame(() => {
         if (materialRef.current) {
-            materialRef.current.uniforms.uTime.value = state.clock.elapsedTime;
+            timer.current.update();
+            materialRef.current.uniforms.uTime.value = timer.current.getElapsed();
             const scrollY = window.scrollY || 0;
             materialRef.current.uniforms.uScroll.value = scrollY * 0.002;
         }
@@ -91,7 +93,7 @@ export const LiquidChromeBackground: React.FC = () => {
             className="fixed inset-0 w-full h-full pointer-events-none"
             style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}
         >
-            <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
+            <Canvas camera={{ position: [0, 0, 5], fov: 75 }} gl={{ failIfMajorPerformanceCaveat: false }}>
                 <ambientLight intensity={0.5} />
                 <ChromePlane />
             </Canvas>
