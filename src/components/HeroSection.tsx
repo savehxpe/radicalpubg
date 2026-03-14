@@ -65,15 +65,6 @@ export default function HeroSection() {
                     <span className="text-white text-xs font-bold uppercase tracking-[0.3em]">Global Publishing & Licensing</span>
                 </motion.div>
 
-                <motion.h1
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
-                    className="text-7xl md:text-9xl font-black uppercase tracking-[0.1em] text-white mb-4"
-                >
-                    RADICAL
-                </motion.h1>
-
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -91,16 +82,6 @@ export default function HeroSection() {
                         </div>
                     </LogoErrorBoundary>
                 </motion.div>
-
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
-                    className="text-slate-400 text-xl md:text-2xl max-w-2xl mx-auto mb-12 leading-relaxed font-light tracking-widest uppercase text-center"
-                >
-                    Empowering The Future <br className="hidden md:block" />
-                    <span className="text-white font-bold">Of Sound</span>
-                </motion.p>
 
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
