@@ -30,6 +30,7 @@ export const InquirySection: React.FC = () => {
                 <h2 className="text-xl md:text-2xl font-bold tracking-widest uppercase mb-1">RADICAL PUBLISHING GROUP</h2>
                 <h3 className="text-xs md:text-sm text-white/60 uppercase tracking-widest mb-12">OFFICE OF THE CEO</h3>
 
+                {/* FORM_UI: Minimalist letterhead. Remove [] brackets. */}
                 <div className="space-y-2 mb-12 text-sm md:text-base tracking-wide border-l-4 border-white/40 pl-4 text-white">
                     <p>TO: ADMINISTRATION / SYNC LICENSING</p>
                     <p>RE: NEW PARTNERSHIP INQUIRY</p>
@@ -85,7 +86,7 @@ export const InquirySection: React.FC = () => {
                                 disabled={status === 'loading'}
                                 className="px-12 py-4 bg-white text-black hover:bg-white/90 transition-all duration-300 uppercase tracking-[0.2em] text-sm font-black disabled:opacity-50 rounded-none w-full md:w-auto"
                             >
-                                {status === 'loading' ? 'PROCESSING...' : 'SUBMIT INQUIRY'}
+                                {status === 'loading' ? 'PROCESSING...' : 'SUBMIT'}
                             </button>
                         </div>
                         {status === 'error' && <div className="text-white text-sm text-center border border-white bg-white/10 p-2 mt-4 uppercase">TRANSMISSION FAILED. VERIFY CONNECTION AND RETRY.</div>}

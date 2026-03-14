@@ -4,9 +4,10 @@ const executives = [
     {
         id: "dre",
         name: "Dre Moon",
+        displayName: "Andre Eric Proctor",
         title: "CEO & Founder",
         image: "/assets/DRE_MOON.jpeg",
-        featured_credit: "Featured: Beyoncé - Drunk in Love",
+        featured_credit: "Grammy-winning producer (Beyoncé, The Weeknd, Future)",
         bio: [
             "Grammy Award-winning producer and visionary executive, Dre Moon architects the global sonic strategy at RADICAL Publishing Group. His catalog spans multi-platinum triumphs across major DSPs and cultural landmarks.",
             "Bridging the gap between raw creative talent and worldwide licensing, his leadership transforms independent artistry into global resonance, driving equity and innovation at the vanguard of modern music publishing."
@@ -52,7 +53,10 @@ export default function DreMoonSection() {
                         >
                             <img src={exec.image} alt={exec.name} className="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full mb-8 filter grayscale" />
                             <h2 className="text-sm text-gray-400 tracking-[0.3em] font-bold uppercase mb-4">{exec.title}</h2>
-                            <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-white leading-none">{exec.name}</h3>
+                            <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-1 text-white leading-none">{exec.name}</h3>
+                            {exec.displayName && (
+                                <p className="text-white/40 font-mono text-[10px] uppercase tracking-widest mb-4">({exec.displayName})</p>
+                            )}
 
                             {exec.featured_credit && (
                                 <p className="text-white/60 font-mono text-sm tracking-widest mb-8">{exec.featured_credit}</p>

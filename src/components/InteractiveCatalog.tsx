@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const catalogItems = [
     {
@@ -70,7 +70,8 @@ function CatalogCard({ item }: { item: typeof catalogItems[0] }) {
     return (
         <motion.div
             ref={cardRef}
-            className="relative w-full aspect-square rounded-sm cursor-pointer group bg-black border border-white/20 hover:border-white transition-all duration-500 hover:z-10"
+            layout
+            className="relative w-full aspect-square rounded-none cursor-pointer group bg-black border border-white/20 hover:border-white transition-all duration-500 hover:z-10"
             style={{ perspective: 1000 }}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -102,34 +103,57 @@ function CatalogCard({ item }: { item: typeof catalogItems[0] }) {
 }
 
 export default function InteractiveCatalog() {
+    const [searchQuery, setSearchQuery] = useState('');
+
+    const filteredItems = catalogItems.filter(item =>
+        item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        item.artist.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <section id="catalog" className="py-24 bg-transparent relative overflow-hidden border-t border-white/10">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-white">Core <span className="text-white/50">Catalog</span></h2>
-                    <p className="text-white/60 font-light tracking-wide uppercase text-sm max-w-xl mx-auto">
+                    <p className="text-white/60 font-light tracking-wide uppercase text-sm max-w-xl mx-auto mb-12">
                         Featured Production Credits & Discography
                     </p>
+
+                    {/* SEARCH_UI: Render input field directly above the Catalog Grid */}
+                    <div className="max-w-md mx-auto relative">
+                        <input
+                            type="text"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            placeholder="SEARCH CATALOG..."
+                            className="w-full bg-transparent border-b border-white/30 text-white py-3 px-4 font-mono uppercase tracking-widest focus:border-white focus:outline-none transition-colors text-center"
+                        />
+                    </div>
                 </div>
 
-                <div className="relative w-full max-w-7xl mx-auto overflow-hidden">
-                    {/* Fade edges */}
-                    <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-background-dark to-transparent z-10 pointer-events-none"></div>
-                    <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-background-dark to-transparent z-10 pointer-events-none"></div>
-
-                    <motion.div
-                        animate={{ x: [0, -2000] }}
-                        transition={{ repeat: Infinity, ease: "linear", duration: 60 }}
-                        className="flex gap-6 items-center py-8"
-                        style={{ width: "max-content" }}
-                    >
-                        {[...catalogItems, ...catalogItems, ...catalogItems].map((item, index) => (
-                            <div key={`${item.id}-${index}`} className="w-64 md:w-72 lg:w-80 flex-shrink-0">
+                {/* Catalog Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <AnimatePresence mode="popLayout">
+                        {filteredItems.map((item) => (
+                            <motion.div
+                                key={item.id}
+                                layout
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                transition={{ duration: 0.4 }}
+                            >
                                 <CatalogCard item={item} />
-                            </div>
+                            </motion.div>
                         ))}
-                    </motion.div>
+                    </AnimatePresence>
                 </div>
+
+                {filteredItems.length === 0 && (
+                    <div className="text-center py-24">
+                        <p className="text-white/40 font-mono uppercase tracking-widest">No matching results found.</p>
+                    </div>
+                )}
             </div>
         </section>
     );
