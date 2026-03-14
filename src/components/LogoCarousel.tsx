@@ -12,7 +12,7 @@ const logos = [
 
 export default function LogoCarousel() {
     return (
-        <section className="py-12 border-y border-white/10 overflow-hidden bg-black flex justify-center">
+        <section className="py-12 border-y border-white/10 overflow-hidden bg-black/40 backdrop-blur-sm flex justify-center">
             <div className="flex whitespace-nowrap group w-full max-w-7xl relative">
                 {/* Fade edges */}
                 <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
@@ -28,7 +28,7 @@ export default function LogoCarousel() {
                             <img
                                 src={logo.src}
                                 alt={logo.alt}
-                                className="max-h-8 md:max-h-12 w-auto object-contain brightness-0 invert opacity-60 hover:opacity-100 transition-opacity cursor-default absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                                className="max-h-8 md:max-h-12 w-auto object-contain grayscale opacity-60 hover:opacity-100 transition-opacity cursor-default absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                             />
                         </div>
                     ))}

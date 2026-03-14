@@ -20,25 +20,9 @@ const catalogItems = [
     },
     {
         id: 3,
-        title: "DRUNK IN LOVE",
-        artist: "BEYONCÉ",
-        role: "Co-Producer",
-        year: "2013",
-        coverArt: "/assets/CATALOG_3_BEYONCÉ_DRUNK_IN_LOVE.png",
-    },
-    {
-        id: 4,
-        title: "AFTER HOURS",
-        artist: "THE WEEKND",
-        role: "Producer",
-        year: "2020",
-        coverArt: "/assets/CATALOG_4_THE_WEEKND_AFTER_HOURS.png",
-    },
-    {
-        id: 5,
         title: "STILL DECIDING",
         artist: "SAVEHXPE",
-        role: "Producer",
+        role: "Executive Producer",
         year: "2026",
         coverArt: "/assets/CATALOG_5_SAVEHXPE_STILL_DECIDING.png",
     }
@@ -103,7 +87,7 @@ function CatalogCard({ item }: { item: typeof catalogItems[0] }) {
 
 export default function InteractiveCatalog() {
     return (
-        <section id="catalog" className="py-24 bg-black relative overflow-hidden border-t border-white/10">
+        <section id="catalog" className="py-24 bg-transparent relative overflow-hidden border-t border-white/10">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter mb-4 text-white">Core <span className="text-white/50">Catalog</span></h2>

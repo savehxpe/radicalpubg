@@ -20,7 +20,7 @@ export default function ServicesSection() {
     ];
 
     return (
-        <section id="services" className="px-6 py-20 lg:px-20 bg-background-dark text-slate-100">
+        <section id="services" className="px-6 py-20 lg:px-20 bg-transparent text-slate-100">
             <div className="max-w-7xl mx-auto">
                 <div className="flex flex-col items-center justify-center text-center mb-16">
                     <div className="max-w-xl">

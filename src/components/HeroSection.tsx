@@ -1,24 +1,8 @@
 import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Stars, PerspectiveCamera, useTexture } from '@react-three/drei';
+import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
-
-function CyberGrid() {
-    const gridRef = useRef<any>(null);
-
-    useFrame((state) => {
-        if (gridRef.current) {
-            gridRef.current.position.z = (state.clock.elapsedTime * 2) % 2;
-        }
-    });
-
-    return (
-        <group>
-            <gridHelper ref={gridRef} args={[100, 100, '#333333', '#111111']} position={[0, -2, -10]} rotation={[0, 0, 0]} />
-        </group>
-    );
-}
 
 function RotatingLogo() {
     const meshRef = useRef<THREE.Mesh>(null);
@@ -42,16 +26,10 @@ function RotatingLogo() {
 
 export default function HeroSection() {
     return (
-        <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden w-full bg-background-dark">
-            {/* 3D Background */}
-            <div className="absolute inset-0 z-0">
-                <Canvas>
-                    <PerspectiveCamera makeDefault position={[0, 2, 5]} fov={75} />
-                    <ambientLight intensity={0.2} />
-                    <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
-                    <CyberGrid />
-                </Canvas>
-                <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-transparent to-background-dark/80 z-10 pointer-events-none"></div>
+        <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden w-full bg-transparent">
+            {/* Global background blend */}
+            <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background-dark/30 to-background-dark"></div>
             </div>
 
             {/* Content */}
