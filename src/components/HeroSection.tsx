@@ -3,25 +3,29 @@ import { motion } from 'framer-motion';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { useTexture } from '@react-three/drei';
 import * as THREE from 'three';
-import { Timer } from 'three';
 
 function RotatingLogo() {
     const meshRef = useRef<THREE.Mesh>(null);
     const texture = useTexture('/assets/RADICAL_LOGO_WHITE.png');
     texture.colorSpace = THREE.SRGBColorSpace;
-    const timer = useRef(new Timer());
 
-    useFrame(() => {
-        timer.current.update();
+    useFrame((_, delta) => {
         if (meshRef.current) {
-            meshRef.current.rotation.y = timer.current.getElapsed() * 0.5;
+            // Drive rotation via delta as requested
+            meshRef.current.rotation.y += delta * 0.5;
         }
     });
 
     return (
         <mesh ref={meshRef}>
             <planeGeometry args={[8, 1.6]} />
-            <meshBasicMaterial map={texture} transparent={true} side={THREE.DoubleSide} alphaTest={0.01} />
+            <meshBasicMaterial
+                map={texture}
+                transparent={true}
+                side={THREE.DoubleSide}
+                alphaTest={0.01}
+                opacity={1}
+            />
         </mesh>
     );
 }
@@ -37,8 +41,8 @@ export default function HeroSection() {
             {/* Content Container: Strict vertical flexbox */}
             <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 w-full max-w-4xl">
 
-                {/* Top: 3D Rotating Logo */}
-                <div className="h-48 md:h-64 w-full relative mb-12">
+                {/* Top: 3D Rotating Logo - Forced Dimensions & Z-Index */}
+                <div className="w-full min-h-[250px] flex justify-center items-center z-50 relative mb-8">
                     <Suspense fallback={<div className="h-full w-full" />}>
                         <Canvas camera={{ position: [0, 0, 5], fov: 50 }} gl={{ antialias: true, alpha: true }}>
                             <ambientLight intensity={1.5} />
