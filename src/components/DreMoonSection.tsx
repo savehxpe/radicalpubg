@@ -9,14 +9,6 @@ const dreMoonItems = [
         role: "Co-Producer",
         year: "2013",
         coverArt: "/assets/CATALOG_3_BEYONCÉ_DRUNK_IN_LOVE.png",
-    },
-    {
-        id: 2,
-        title: "AFTER HOURS",
-        artist: "THE WEEKND",
-        role: "Producer",
-        year: "2020",
-        coverArt: "/assets/CATALOG_4_THE_WEEKND_AFTER_HOURS.png",
     }
 ];
 
@@ -79,34 +71,12 @@ function DreMoonCard({ item }: { item: typeof dreMoonItems[0] }) {
 
 export default function DreMoonSection() {
     return (
-        <section id="artists" className="py-24 bg-transparent relative overflow-hidden border-t border-white/10">
-            <div className="container mx-auto px-6 relative z-10 max-w-7xl">
-                <div className="flex flex-col lg:flex-row items-center gap-12">
-                    {/* Bio Section */}
-                    <div className="lg:w-1/2">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <h2 className="text-sm text-white/50 tracking-[0.3em] font-bold uppercase mb-4">Chief Executive Officer</h2>
-                            <h3 className="text-5xl md:text-6xl font-black uppercase tracking-tighter mb-6 text-white leading-none">Dre Moon</h3>
-
-                            <div className="glass-panel p-8 rounded-xl relative border border-white/10 mt-8">
-                                <p className="text-slate-400 text-lg leading-relaxed mb-6 font-light">
-                                    Grammy Award-winning producer and visionary executive, Dre Moon architects the global sonic strategy at RADICAL Publishing Group. His catalog spans multi-platinum triumphs across major DSPs and cultural landmarks.
-                                </p>
-                                <p className="text-slate-400 text-lg leading-relaxed font-light">
-                                    Bridging the gap between raw creative talent and worldwide licensing, his leadership transforms independent artistry into global resonance, driving equity and innovation at the vanguard of modern music publishing.
-                                </p>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    {/* 3D Catalog Section */}
-                    <div className="lg:w-1/2 w-full mt-12 lg:mt-0">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+        <section id="artists" className="py-24 bg-transparent relative overflow-hidden border-t border-white/10 z-10">
+            <div className="container mx-auto px-6 relative max-w-7xl">
+                <div className="flex flex-col lg:flex-row items-center gap-16">
+                    {/* Left Column: 3D Catalog Section */}
+                    <div className="lg:w-1/2 w-full flex justify-center lg:justify-end">
+                        <div className="w-full max-w-md">
                             {dreMoonItems.map((item, index) => (
                                 <motion.div
                                     key={item.id}
@@ -119,6 +89,28 @@ export default function DreMoonSection() {
                                 </motion.div>
                             ))}
                         </div>
+                    </div>
+
+                    {/* Right Column: Bio Section */}
+                    <div className="lg:w-1/2">
+                        <motion.div
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8 }}
+                        >
+                            <h2 className="text-sm text-gray-400 tracking-[0.3em] font-bold uppercase mb-4">Chief Executive Officer</h2>
+                            <h3 className="text-5xl md:text-6xl font-black uppercase tracking-tighter mb-8 text-white leading-none">Dre Moon</h3>
+
+                            <div className="space-y-6">
+                                <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-light">
+                                    Grammy Award-winning producer and visionary executive, Dre Moon architects the global sonic strategy at RADICAL Publishing Group. His catalog spans multi-platinum triumphs across major DSPs and cultural landmarks.
+                                </p>
+                                <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-light">
+                                    Bridging the gap between raw creative talent and worldwide licensing, his leadership transforms independent artistry into global resonance, driving equity and innovation at the vanguard of modern music publishing.
+                                </p>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>

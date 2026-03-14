@@ -12,13 +12,10 @@
 @layer base {
   body {
     background-color: var(--color-background-dark);
-    background-image: url('/assets/black_chrome_bg.png');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
     color: white;
     font-family: var(--font-display);
     overflow-x: hidden;
+    overflow-y: auto;
   }
 }
 

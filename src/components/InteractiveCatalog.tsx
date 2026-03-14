@@ -23,7 +23,7 @@ const catalogItems = [
         title: "STILL DECIDING",
         artist: "SAVEHXPE",
         role: "Executive Producer",
-        year: "2026",
+        year: "2022",
         coverArt: "/assets/CATALOG_5_SAVEHXPE_STILL_DECIDING.png",
     }
 ];
