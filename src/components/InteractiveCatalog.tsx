@@ -58,7 +58,10 @@ function CatalogCard({ item }: { item: CatalogItem }) {
                     className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 opacity-60 group-hover:opacity-100 group-hover:scale-105"
                     onError={(e) => {
                         const target = e.target as HTMLImageElement;
-                        target.src = "https://via.placeholder.com/600x600/000000/FFFFFF?text=COVER+ART";
+                        target.style.display = 'none';
+                        if (target.parentElement) {
+                            target.parentElement.classList.add('bg-black', 'border', 'border-white/20');
+                        }
                     }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-500"></div>
